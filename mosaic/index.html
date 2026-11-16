@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, user-scalable=no">
+<meta name="theme-color" content="#14121f">
+<title>Jewel Mosaic</title>
+<link rel="manifest" href="../manifest.webmanifest">
+<link rel="icon" href="../icon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="../shared/base.css">
+<link rel="stylesheet" href="mosaic.css">
+</head>
+<body>
+<main class="app">
+  <header class="topbar">
+    <a class="icon-btn" href="../" aria-label="All games">‹</a>
+    <h1 id="title">Jewel Mosaic</h1>
+    <button class="icon-btn" id="helpBtn" aria-label="How to play">?</button>
+  </header>
+  <section class="stats" aria-live="polite">
+    <div class="stat"><div class="label">Picture</div><div class="value" id="level">1</div></div>
+    <div class="stat"><div class="label">Placed</div><div class="value" id="placed">0%</div></div>
+    <div class="stat"><div class="label">Moves</div><div class="value" id="moves">0</div></div>
+  </section>
+  <div class="progress"><div id="progress"></div></div>
+  <section class="stage" id="stage"><div class="mo-board" id="board"></div></section>
+  <section class="mo-tray-wrap">
+    <div class="mo-tray-label">Tray</div>
+    <div class="mo-tray" id="tray"></div>
+  </section>
+  <div class="mo-palette" id="palette"></div>
+  <nav class="toolbar">
+    <button class="btn" id="undoBtn">↶ Undo</button>
+    <button class="btn" id="hintBtn">✦ Hint</button>
+    <button class="btn" id="restartBtn">↻ Restart</button>
+  </nav>
+</main>
+<script type="module" src="app.js"></script>
+</body>
+</html>

@@ -1,7 +1,7 @@
 {
   "name": "Mobile Games",
   "short_name": "Games",
-  "description": "Mahjong Pairs, Gemfall and Prism Painter: tile and gem puzzles that run in the browser.",
+  "description": "Mahjong Pairs, Jewel Mosaic, Gemfall and Prism Painter: tile and gem puzzles that run in the browser.",
   "start_url": "./",
   "scope": "./",
   "display": "standalone",

@@ -137,3 +137,22 @@
 @keyframes bob { 50% { transform: scale(1.25); } }
 @keyframes nope { 25% { transform: translateX(-4px); } 75% { transform: translateX(4px); } }
 @keyframes shimmer { 50% { filter: brightness(1.35); } }
+
+/* Mode switch */
+.mo-modes {
+  display: flex;
+  align-self: center;
+  background: var(--panel);
+  border-radius: 99px;
+  padding: 3px;
+  gap: 2px;
+}
+.mo-modes button {
+  background: transparent;
+  border-radius: 99px;
+  padding: 6px 14px;
+  font-size: .85rem;
+  font-weight: 600;
+  color: var(--ink-dim);
+}
+.mo-modes button[aria-pressed="true"] { background: var(--accent); color: var(--accent-ink); }

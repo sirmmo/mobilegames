@@ -1,5 +1,5 @@
 // Offline support: cache-first for the game files, refreshed in the background.
-const CACHE = 'mobilegames-v2';
+const CACHE = 'mobilegames-v3';
 const FILES = [
   './', 'index.html', 'icon.svg', 'manifest.webmanifest',
   'shared/base.css', 'shared/match3.css', 'shared/util.js', 'shared/gems.js', 'shared/match3.js',

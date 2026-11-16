@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, user-scalable=no">
+<meta name="theme-color" content="#14121f">
+<title>Mahjong Pairs</title>
+<link rel="manifest" href="../manifest.webmanifest">
+<link rel="icon" href="../icon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="../shared/base.css">
+<link rel="stylesheet" href="mahjong.css">
+</head>
+<body>
+<main class="app">
+  <header class="topbar">
+    <a class="icon-btn" href="../" aria-label="All games">‹</a>
+    <h1 id="title">Mahjong Pairs</h1>
+    <button class="icon-btn" id="menuBtn" aria-label="Layouts and options">☰</button>
+  </header>
+  <section class="stats" aria-live="polite">
+    <div class="stat"><div class="label">Tiles</div><div class="value" id="left">0</div></div>
+    <div class="stat"><div class="label">Moves</div><div class="value" id="moves">0</div></div>
+    <div class="stat"><div class="label">Time</div><div class="value" id="time">0:00</div></div>
+  </section>
+  <section class="stage" id="stage"><div class="mj-board" id="board"></div></section>
+  <nav class="toolbar">
+    <button class="btn" id="undoBtn">↶ Undo</button>
+    <button class="btn" id="hintBtn">✦ Hint</button>
+    <button class="btn" id="shuffleBtn">⇄ Shuffle</button>
+    <button class="btn" id="newBtn">＋ New</button>
+  </nav>
+</main>
+<script type="module" src="app.js"></script>
+</body>
+</html>

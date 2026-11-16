@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#14121f">
+<meta name="description" content="Free tile and gem puzzle games for your phone: Mahjong Pairs, Gemfall and Prism Painter.">
+<title>Mobile Games</title>
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" href="icon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="icon.svg">
+<link rel="stylesheet" href="shared/base.css">
+<style>
+  .hub { max-width: 720px; margin: 0 auto; padding: max(20px, env(safe-area-inset-top)) 16px 40px; }
+  .hub header { display: flex; align-items: center; gap: 14px; margin-bottom: 22px; }
+  .hub header img { width: 56px; height: 56px; }
+  .hub h1 { margin: 0; font-size: 1.6rem; }
+  .hub header p { margin: 2px 0 0; color: var(--ink-dim); }
+  .grid { display: grid; gap: 14px; grid-template-columns: repeat(auto-fill, minmax(min(100%, 300px), 1fr)); }
+  .card {
+    display: flex; gap: 14px; align-items: center;
+    background: var(--panel); border-radius: 20px; padding: 14px;
+    text-decoration: none; color: var(--ink);
+    box-shadow: var(--shadow);
+    transition: transform .15s ease, background .15s ease;
+  }
+  .card:hover { background: var(--panel-2); }
+  .card:active { transform: scale(.98); }
+  .card .art { width: 72px; height: 72px; flex: none; border-radius: 16px; display: grid; place-items: center; }
+  .card h2 { margin: 0 0 4px; font-size: 1.1rem; }
+  .card p { margin: 0; color: var(--ink-dim); font-size: .9rem; line-height: 1.35; }
+  .card .tag { font-size: .7rem; text-transform: uppercase; letter-spacing: .08em; color: var(--accent); font-weight: 700; }
+  .section { margin: 26px 0 10px; font-size: .8rem; text-transform: uppercase; letter-spacing: .1em; color: var(--ink-dim); }
+  footer { margin-top: 30px; color: var(--ink-dim); font-size: .85rem; text-align: center; }
+</style>
+</head>
+<body>
+<div class="hub">
+  <header>
+    <img src="icon.svg" alt="">
+    <div>
+      <h1>Mobile Games</h1>
+      <p>Tile and gem puzzles. No ads, no accounts, works offline.</p>
+    </div>
+  </header>
+
+  <div class="section">Tiles</div>
+  <div class="grid">
+    <a class="card" href="mahjong/">
+      <div class="art" style="background:#f4ecd6;color:#c0392b"><svg viewBox="0 0 60 80" width="40" height="54"><rect x="4" y="4" width="54" height="74" rx="8" fill="#9c8550"/><rect x="0" y="0" width="54" height="74" rx="8" fill="#fffdf6"/><circle cx="27" cy="37" r="16" fill="#c0392b"/><circle cx="27" cy="37" r="10" fill="none" stroke="#fff" stroke-width="3.5"/><circle cx="27" cy="37" r="3.5" fill="#fff"/></svg></div>
+      <div><span class="tag">Solitaire</span><h2>Mahjong Pairs</h2><p>Remove matching pairs of free tiles until the board is empty. Four layouts.</p></div>
+    </a>
+  </div>
+
+  <div class="section">Gems</div>
+  <div class="grid">
+    <a class="card" href="paint/">
+      <div class="art" style="background:linear-gradient(135deg,#ff4d6d,#ffd60a,#2ec27e,#3a86ff)"><svg viewBox="0 0 30 30" width="50" height="50"><g stroke="#1d1a2e" stroke-width="1"><rect x="0" y="0" width="10" height="10" fill="#ff4d6d"/><rect x="10" y="0" width="10" height="10" fill="#ffd60a"/><rect x="20" y="0" width="10" height="10" fill="#2a2640"/><rect x="0" y="10" width="10" height="10" fill="#2ec27e"/><rect x="10" y="10" width="10" height="10" fill="#3a86ff"/><rect x="20" y="10" width="10" height="10" fill="#b15cff"/><rect x="0" y="20" width="10" height="10" fill="#2a2640"/><rect x="10" y="20" width="10" height="10" fill="#ff9f1c"/><rect x="20" y="20" width="10" height="10" fill="#2a2640"/></g></svg></div>
+      <div><span class="tag">Match three</span><h2>Prism Painter</h2><p>Every match paints the board. Fill the canvas to reveal a hidden picture.</p></div>
+    </a>
+    <a class="card" href="gems/?mode=classic">
+      <div class="art" style="background:#3a86ff22"><svg viewBox="0 0 100 100" width="52" height="52"><defs><radialGradient id="3a86ff" cx="35%" cy="30%" r="75%"><stop offset="0" stop-color="#b3d0ff"/><stop offset=".45" stop-color="#3a86ff"/><stop offset="1" stop-color="#0b3fa0"/></radialGradient></defs><g fill="url(#3a86ff)" stroke="#0b3fa0" stroke-width="3" stroke-linejoin="round"><path d="M50 8 L90 50 L50 92 L10 50 Z"/></g></svg></div>
+      <div><span class="tag">Gemfall</span><h2>Classic</h2><p>Swap gems, reach the target score before the moves run out.</p></div>
+    </a>
+    <a class="card" href="gems/?mode=blitz">
+      <div class="art" style="background:#ff9f1c22"><svg viewBox="0 0 100 100" width="52" height="52"><circle cx="50" cy="56" r="36" fill="#fff3e0" stroke="#ff9f1c" stroke-width="8"/><rect x="42" y="6" width="16" height="10" rx="3" fill="#ff9f1c"/><path d="M50 56 L50 32" stroke="#b35c00" stroke-width="7" stroke-linecap="round"/><path d="M50 56 L66 64" stroke="#b35c00" stroke-width="5" stroke-linecap="round"/></svg></div>
+      <div><span class="tag">Gemfall</span><h2>Blitz</h2><p>Ninety seconds on the clock. Chain combos for a high score.</p></div>
+    </a>
+    <a class="card" href="gems/?mode=shift">
+      <div class="art" style="background:#b15cff22"><svg viewBox="0 0 100 100" width="56" height="56"><path d="M8 50 L20 40 L20 60 Z M92 50 L80 40 L80 60 Z" fill="#e2c2ff"/><circle cx="34" cy="50" r="12" fill="#b15cff"/><circle cx="66" cy="50" r="12" fill="#b15cff"/><rect x="40" y="18" width="20" height="20" rx="4" fill="#ff9f1c"/><rect x="40" y="62" width="20" height="20" rx="4" fill="#ff9f1c"/></svg></div>
+      <div><span class="tag">Gemfall</span><h2>Shift</h2><p>Slide whole rows and columns instead of swapping single gems.</p></div>
+    </a>
+    <a class="card" href="gems/?mode=zen">
+      <div class="art" style="background:#2ec27e22"><svg viewBox="0 0 100 100" width="52" height="52"><path d="M20 80 Q20 20 82 18 Q84 80 20 80 Z" fill="#2ec27e" stroke="#0b6b3f" stroke-width="4"/><path d="M22 78 Q46 50 70 30" stroke="#a8f0c8" stroke-width="4" fill="none" stroke-linecap="round"/></svg></div>
+      <div><span class="tag">Gemfall</span><h2>Zen</h2><p>No clock and no move limit. Relax and match.</p></div>
+    </a>
+  </div>
+
+  <footer>Install it from your browser menu (“Add to Home screen”) to play offline.</footer>
+</div>
+<script type="module">
+  import { registerSW } from './shared/util.js';
+  registerSW('sw.js');
+</script>
+</body>
+</html>

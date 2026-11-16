@@ -1,0 +1,21 @@
+/* Unpainted canvas: dark, faintly hatched. Painted: the picture's colour. */
+.m3-cell, .m3-cell.alt {
+  background:
+    repeating-linear-gradient(45deg, rgba(255,255,255,.08) 0 3px, transparent 4px 8px),
+    #1a1727;
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, .05);
+}
+.m3-cell.painted {
+  background: var(--paint);
+  box-shadow: inset 0 0 0 1px rgba(0, 0, 0, .12), inset 0 0 calc(var(--cell) * .25) rgba(255, 255, 255, .25);
+  animation: splash .45s ease;
+}
+.m3-gem { padding: calc(var(--cell) * .13); }
+.m3-board.reveal .m3-gem { opacity: 0; transition: opacity .8s ease; }
+.m3-board.reveal .m3-cell.painted { box-shadow: none; }
+.m3-board.reveal { box-shadow: var(--shadow), 0 0 40px rgba(255, 207, 90, .35); }
+
+@keyframes splash {
+  0% { filter: brightness(2.2) saturate(.3); transform-origin: center; }
+  100% { filter: none; }
+}

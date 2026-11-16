@@ -1,0 +1,208 @@
+:root {
+  --bg: #14121f;
+  --bg-2: #1d1a2e;
+  --panel: #262238;
+  --panel-2: #312c48;
+  --ink: #f2eefc;
+  --ink-dim: #a8a1c4;
+  --accent: #ffcf5a;
+  --accent-ink: #2a1f00;
+  --good: #5be3a0;
+  --bad: #ff6b7f;
+  --radius: 14px;
+  --shadow: 0 6px 24px rgba(0, 0, 0, .35);
+  color-scheme: dark;
+}
+
+* { box-sizing: border-box; }
+
+html { height: 100%; background-color: var(--bg); }
+
+body {
+  margin: 0;
+  min-height: 100%;
+  background: radial-gradient(120% 80vh at 50% 0%, var(--bg-2), var(--bg)) no-repeat;
+  background-color: var(--bg);
+  color: var(--ink);
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  -webkit-tap-highlight-color: transparent;
+  overscroll-behavior: none;
+}
+
+button {
+  font: inherit;
+  color: inherit;
+  border: 0;
+  cursor: pointer;
+}
+
+a { color: var(--accent); }
+
+/* ---------- App shell ---------- */
+.app {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  height: 100dvh;
+  max-width: 900px;
+  margin: 0 auto;
+  padding: max(8px, env(safe-area-inset-top)) 12px max(8px, env(safe-area-inset-bottom));
+  gap: 8px;
+}
+
+.topbar {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  min-height: 44px;
+}
+
+.topbar h1 {
+  font-size: 1.1rem;
+  margin: 0;
+  flex: 1;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.icon-btn {
+  width: 40px;
+  height: 40px;
+  border-radius: 12px;
+  background: var(--panel);
+  display: grid;
+  place-items: center;
+  font-size: 1.15rem;
+  text-decoration: none;
+  color: var(--ink);
+  flex: none;
+}
+.icon-btn:active { transform: scale(.94); }
+
+.stats {
+  display: flex;
+  gap: 6px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.stat {
+  background: var(--panel);
+  border-radius: 12px;
+  padding: 4px 12px;
+  min-width: 72px;
+  text-align: center;
+}
+.stat .label {
+  font-size: .68rem;
+  text-transform: uppercase;
+  letter-spacing: .08em;
+  color: var(--ink-dim);
+}
+.stat .value {
+  font-size: 1.1rem;
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+}
+
+.progress {
+  height: 8px;
+  background: var(--panel);
+  border-radius: 99px;
+  overflow: hidden;
+}
+.progress > div {
+  height: 100%;
+  width: 0;
+  background: linear-gradient(90deg, var(--accent), #ff8a5a);
+  transition: width .3s ease;
+}
+
+.stage {
+  flex: 1;
+  min-height: 0;
+  display: grid;
+  place-items: center;
+  position: relative;
+}
+
+.toolbar {
+  display: flex;
+  gap: 8px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.btn {
+  background: var(--panel-2);
+  border-radius: 12px;
+  padding: 10px 16px;
+  font-weight: 600;
+  min-height: 44px;
+}
+.btn:active { transform: scale(.96); }
+.btn.primary { background: var(--accent); color: var(--accent-ink); }
+.btn:disabled { opacity: .4; cursor: default; }
+
+/* ---------- Overlay dialogs ---------- */
+.overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(8, 6, 16, .72);
+  display: grid;
+  place-items: center;
+  z-index: 100;
+  padding: 16px;
+  animation: fade .2s ease;
+}
+.overlay[hidden] { display: none; }
+.dialog {
+  background: var(--panel);
+  border-radius: 20px;
+  padding: 22px 20px;
+  width: min(380px, 100%);
+  text-align: center;
+  box-shadow: var(--shadow);
+  max-height: 90vh;
+  overflow: auto;
+}
+.dialog h2 { margin: 0 0 8px; }
+.dialog p { color: var(--ink-dim); margin: 6px 0 14px; line-height: 1.45; }
+.dialog .btn { width: 100%; margin-top: 8px; }
+.dialog .choices { display: grid; gap: 8px; margin: 12px 0; }
+.dialog .choice {
+  background: var(--panel-2);
+  border-radius: 14px;
+  padding: 12px 14px;
+  text-align: left;
+}
+.dialog .choice b { display: block; }
+.dialog .choice span { color: var(--ink-dim); font-size: .85rem; }
+.dialog .choice.active { outline: 2px solid var(--accent); }
+
+.toast {
+  position: absolute;
+  left: 50%;
+  top: 40%;
+  transform: translate(-50%, -50%);
+  font-size: 2rem;
+  font-weight: 800;
+  pointer-events: none;
+  text-shadow: 0 3px 12px rgba(0, 0, 0, .6);
+  animation: pop 1s ease forwards;
+  z-index: 50;
+  white-space: nowrap;
+}
+
+@keyframes fade { from { opacity: 0; } }
+@keyframes pop {
+  0% { opacity: 0; transform: translate(-50%, -30%) scale(.6); }
+  20% { opacity: 1; transform: translate(-50%, -50%) scale(1.1); }
+  70% { opacity: 1; transform: translate(-50%, -60%) scale(1); }
+  100% { opacity: 0; transform: translate(-50%, -80%) scale(1); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration: .01ms !important; transition-duration: .01ms !important; }
+}

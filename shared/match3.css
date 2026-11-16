@@ -1,0 +1,89 @@
+.m3-board {
+  position: relative;
+  border-radius: 16px;
+  overflow: hidden;
+  user-select: none;
+  -webkit-user-select: none;
+  box-shadow: var(--shadow), inset 0 0 0 2px rgba(255, 255, 255, .06);
+  background: rgba(0, 0, 0, .25);
+}
+
+.m3-cells, .m3-gems { position: absolute; inset: 0; }
+
+.m3-cell {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: var(--cell);
+  height: var(--cell);
+  background: rgba(255, 255, 255, .045);
+  transition: background-color .35s ease;
+}
+.m3-cell.alt { background: rgba(255, 255, 255, .085); }
+
+.m3-gem {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: var(--cell);
+  height: var(--cell);
+  padding: calc(var(--cell) * .08);
+  will-change: transform;
+}
+.m3-gem > svg {
+  width: 100%;
+  height: 100%;
+  display: block;
+  filter: drop-shadow(0 2px 2px rgba(0, 0, 0, .45));
+  transition: transform .15s ease, opacity .2s ease;
+}
+
+.m3-gem.selected > svg { transform: scale(1.14); animation: pulse .8s ease-in-out infinite; }
+.m3-gem.hint > svg { animation: wiggle 1s ease-in-out infinite; }
+.m3-gem.shake > svg { animation: shake .3s ease; }
+.m3-gem.pop > svg { transform: scale(1.35); opacity: 0; transition: transform .22s ease-out, opacity .22s ease-out; }
+.m3-gem.born > svg { animation: born .4s ease; }
+
+/* Special gems */
+.m3-gem.sp-h::after, .m3-gem.sp-v::after, .m3-gem.sp-bomb::after {
+  content: "";
+  position: absolute;
+  inset: 18%;
+  pointer-events: none;
+  border-radius: 50%;
+}
+.m3-gem.sp-h::after {
+  inset: 42% 6%;
+  border-radius: 99px;
+  background: linear-gradient(90deg, transparent, #fff 20%, #fff 80%, transparent);
+  box-shadow: 0 0 10px 2px #fff;
+  opacity: .9;
+}
+.m3-gem.sp-v::after {
+  inset: 6% 42%;
+  border-radius: 99px;
+  background: linear-gradient(180deg, transparent, #fff 20%, #fff 80%, transparent);
+  box-shadow: 0 0 10px 2px #fff;
+  opacity: .9;
+}
+.m3-gem.sp-bomb::after {
+  border: 3px solid #fff;
+  box-shadow: 0 0 12px 3px rgba(255, 255, 255, .8), inset 0 0 10px rgba(255, 255, 255, .8);
+  animation: glow 1.2s ease-in-out infinite;
+}
+.m3-gem.sp-prism > svg { animation: spin 4s linear infinite; }
+.m3-gem.fire { filter: brightness(1.8); }
+
+@keyframes pulse { 50% { transform: scale(1.05); } }
+@keyframes wiggle {
+  0%, 100% { transform: rotate(0) scale(1); }
+  25% { transform: rotate(-10deg) scale(1.1); }
+  75% { transform: rotate(10deg) scale(1.1); }
+}
+@keyframes shake {
+  25% { transform: translateX(-12%); }
+  75% { transform: translateX(12%); }
+}
+@keyframes born { 0% { transform: scale(.2); } 70% { transform: scale(1.2); } }
+@keyframes glow { 50% { opacity: .45; } }
+@keyframes spin { to { transform: rotate(360deg); } }

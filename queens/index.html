@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, user-scalable=no">
+<meta name="theme-color" content="#14121f">
+<title>Crowns</title>
+<link rel="manifest" href="../manifest.webmanifest">
+<link rel="icon" href="../icon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="../shared/base.css">
+<link rel="stylesheet" href="queens.css">
+</head>
+<body>
+<main class="app">
+  <header class="topbar">
+    <a class="icon-btn" href="../" aria-label="All games">‹</a>
+    <h1 id="title">Crowns</h1>
+    <button class="icon-btn" id="helpBtn" aria-label="How to play">?</button>
+  </header>
+  <section class="stats" aria-live="polite">
+    <div class="stat"><div class="label">Puzzle</div><div class="value" id="num">1</div></div>
+    <div class="stat"><div class="label">Size</div><div class="value" id="size">6×6</div></div>
+    <div class="stat"><div class="label">Time</div><div class="value" id="time">0:00</div></div>
+  </section>
+  <section class="stage" id="stage"><div class="qn-board" id="board"></div></section>
+  <label class="qn-auto"><input type="checkbox" id="autoX"> Auto-mark cells a crown rules out</label>
+  <nav class="toolbar">
+    <button class="btn" id="undoBtn">↶ Undo</button>
+    <button class="btn" id="hintBtn">✦ Hint</button>
+    <button class="btn" id="clearBtn">✕ Clear</button>
+    <button class="btn primary" id="listBtn">▦ Puzzles</button>
+  </nav>
+</main>
+<script type="module" src="app.js"></script>
+</body>
+</html>

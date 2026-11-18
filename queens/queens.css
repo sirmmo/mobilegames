@@ -1,0 +1,80 @@
+.qn-board {
+  display: grid;
+  grid-template-columns: repeat(var(--n), var(--cell));
+  grid-auto-rows: var(--cell);
+  border: 3px solid #0d0b14;
+  border-radius: 8px;
+  overflow: hidden;
+  touch-action: none;
+  user-select: none;
+  -webkit-user-select: none;
+  box-shadow: var(--shadow);
+}
+
+.qn-cell {
+  position: relative;
+  display: grid;
+  place-items: center;
+  background: var(--c);
+  border: 0 solid #0d0b14;
+  border-right-width: 1px;
+  border-bottom-width: 1px;
+  border-color: rgba(13, 11, 20, .25);
+  color: #1d1a2e;
+  cursor: pointer;
+}
+/* Thick lines where regions meet. */
+.qn-cell.bt { border-top: 2px solid #0d0b14; }
+.qn-cell.bl { border-left: 2px solid #0d0b14; }
+.qn-cell.br { border-right: 2px solid #0d0b14; }
+.qn-cell.bb { border-bottom: 2px solid #0d0b14; }
+
+.qn-cell .x {
+  font-size: calc(var(--cell) * .38);
+  font-weight: 700;
+  opacity: .55;
+  line-height: 1;
+}
+.qn-cell.auto .x { opacity: .28; }
+
+.qn-cell svg {
+  width: 68%;
+  height: 68%;
+  filter: drop-shadow(0 1px 1px rgba(0, 0, 0, .35));
+  animation: qn-drop .18s ease-out;
+}
+.qn-cell.bad { background: repeating-linear-gradient(45deg, var(--c) 0 5px, #ff6b7f 5px 8px); }
+.qn-cell.bad svg { color: #c1121f; }
+.qn-cell.hint { animation: qn-pulse .7s ease-in-out 3; z-index: 1; }
+.qn-cell.wrong { outline: 3px solid #c1121f; outline-offset: -3px; }
+
+.qn-board.won .qn-cell svg { animation: qn-win .6s ease-in-out calc(var(--k) * 60ms) 2; }
+
+.qn-auto {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  color: var(--ink-dim);
+  font-size: .9rem;
+  min-height: 32px;
+}
+.qn-auto input { width: 20px; height: 20px; accent-color: var(--accent); }
+
+/* Puzzle picker */
+.qn-pick { text-align: left; }
+.qn-pick h3 { margin: 14px 0 6px; font-size: .85rem; color: var(--ink-dim); text-transform: uppercase; letter-spacing: .08em; }
+.qn-pick .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(40px, 1fr)); gap: 6px; }
+.qn-pick button {
+  background: var(--panel-2);
+  border-radius: 10px;
+  min-height: 40px;
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+}
+.qn-pick button.done { background: #2b5a46; color: var(--good); }
+.qn-pick button.cur { outline: 2px solid var(--accent); }
+
+@keyframes qn-drop { from { transform: scale(1.6); opacity: 0; } }
+@keyframes qn-pulse { 50% { box-shadow: inset 0 0 0 4px var(--accent); } }
+@keyframes qn-win { 50% { transform: scale(1.25) rotate(-8deg); } }

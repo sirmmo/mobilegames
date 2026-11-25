@@ -30,3 +30,26 @@ node tools/gen-queens.mjs     # regenerate queens/puzzles.js (fixed seed)
 - `sw.js` – offline cache. Bump `CACHE` when releasing changes.
 
 Progress and best scores are stored in the browser's `localStorage`.
+
+## Publishing on Wavedash
+
+Each game is its own game on [Wavedash](https://wavedash.com) ([docs](https://docs.wavedash.com)),
+configured in `wavedash/<game>/wavedash.toml` (`gems`, `mahjong`, `mosaic`, `paint`, `queens`).
+
+1. **Create the game** in the Wavedash Developer Portal, or with the CLI (`curl -fsSL
+   https://wavedash.com/cli/install.sh | sh`, `wavedash auth login`, then `wavedash project create
+   --title "Crowns" --team-id <TEAM_ID>`).
+2. **Set its id**: `game_id` in its `wavedash.toml`, or, to keep it out of the repository,
+   `WAVEDASH_GAME_ID_<GAME>` in the environment and as a repository variable (Settings › Secrets and
+   variables › Actions › Variables), e.g. `WAVEDASH_GAME_ID_QUEENS`.
+3. **Upload a build**: `sh tools/wavedash.sh [game]` copies each game into `wavedash/<game>/build/`
+   (its page as `index.html`, with `shared/`; no hub, no offline copy) and, with the CLI on `PATH`
+   and `WAVEDASH_TOKEN` set, runs `wavedash build push`. Without the CLI (or with
+   `WAVEDASH_DRY_RUN=1`) it only says what it would push. On GitHub: Actions › Wavedash › Run
+   workflow, with the secret `WAVEDASH_TOKEN`.
+4. **Publish it**: `wavedash publish <BUILD_ID>` (the id `build push` printed), or in the Developer
+   Portal.
+
+On Wavedash the game stays behind Wavedash's loading screen until it calls `Wavedash.init()`: each
+game does it through `shared/wavedash.js` once its board is drawn. Elsewhere (GitHub Pages, `python3
+-m http.server`) there is no `Wavedash` object and the call does nothing.

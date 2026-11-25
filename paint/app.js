@@ -126,3 +126,4 @@ window.__engine = () => engine; // debugging aid
 new ResizeObserver(fit).observe(stage);
 start();
 if (!store.get('paint:seenHelp', false)) help(true);
+window.WavedashHook?.ready(); // on Wavedash: the canvas is drawn, show the game

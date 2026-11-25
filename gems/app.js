@@ -201,3 +201,4 @@ $('restartBtn').onclick = async () => {
 window.__engine = () => engine; // debugging aid
 new ResizeObserver(fit).observe(stage);
 start();
+window.WavedashHook?.ready(); // on Wavedash: the board is drawn, show the game

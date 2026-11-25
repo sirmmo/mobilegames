@@ -319,3 +319,4 @@ if (!store.get('queens:seenHelp', false)) {
   store.set('queens:seenHelp', true);
   help();
 }
+window.WavedashHook?.ready(); // on Wavedash: the puzzle is drawn, show the game

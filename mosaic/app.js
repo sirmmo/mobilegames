@@ -557,3 +557,4 @@ new ResizeObserver(fit).observe(stage);
 start();
 if (!store.get('mosaic:seenHelp', false)) help(true);
 window.__mosaic = () => S; // debugging aid
+window.WavedashHook?.ready(); // on Wavedash: the picture is drawn, show the game

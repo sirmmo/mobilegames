@@ -224,3 +224,4 @@ $('menuBtn').onclick = menu;
 
 new ResizeObserver(layout).observe(stage);
 start();
+window.WavedashHook?.ready(); // on Wavedash: the board is drawn, show the game

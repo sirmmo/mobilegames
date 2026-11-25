@@ -1,0 +1,46 @@
+# Uploads the games to Wavedash (https://wavedash.com) as new builds, by hand only
+# (Actions > Wavedash > Run workflow). Publishing a build stays a separate step:
+# `wavedash publish <BUILD_ID>`, or the Developer Portal.
+# Needs the repository secret WAVEDASH_TOKEN and, per game, the repository variable
+# WAVEDASH_GAME_ID_<GAME> (e.g. WAVEDASH_GAME_ID_QUEENS) with its Wavedash project id.
+name: Wavedash
+
+on:
+  workflow_dispatch:
+    inputs:
+      game:
+        description: Game to upload
+        type: choice
+        options: [all, gems, mahjong, mosaic, paint, queens]
+        default: all
+
+permissions:
+  contents: read
+
+concurrency:
+  group: wavedash
+  cancel-in-progress: false
+
+jobs:
+  push:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      # Plain HTML, CSS and JavaScript modules: nothing to build.
+      - name: Install the Wavedash CLI
+        run: |
+          curl -fsSL https://wavedash.com/cli/install.sh | sh
+          echo "${CARGO_HOME:-$HOME/.cargo}/bin" >> "$GITHUB_PATH"
+      - name: Build and upload
+        run: |
+          wavedash --version
+          sh tools/wavedash.sh "$GAME"
+        env:
+          GAME: ${{ inputs.game }}
+          WAVEDASH_TOKEN: ${{ secrets.WAVEDASH_TOKEN }}
+          WAVEDASH_MESSAGE: Build ${{ github.sha }}
+          WAVEDASH_GAME_ID_GEMS: ${{ vars.WAVEDASH_GAME_ID_GEMS }}
+          WAVEDASH_GAME_ID_MAHJONG: ${{ vars.WAVEDASH_GAME_ID_MAHJONG }}
+          WAVEDASH_GAME_ID_MOSAIC: ${{ vars.WAVEDASH_GAME_ID_MOSAIC }}
+          WAVEDASH_GAME_ID_PAINT: ${{ vars.WAVEDASH_GAME_ID_PAINT }}
+          WAVEDASH_GAME_ID_QUEENS: ${{ vars.WAVEDASH_GAME_ID_QUEENS }}

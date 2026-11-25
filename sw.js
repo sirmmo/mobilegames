@@ -1,8 +1,8 @@
 // Offline support: cache-first for the game files, refreshed in the background.
-const CACHE = 'mobilegames-v4';
+const CACHE = 'mobilegames-v5';
 const FILES = [
   './', 'index.html', 'icon.svg', 'manifest.webmanifest',
-  'shared/base.css', 'shared/match3.css', 'shared/util.js', 'shared/gems.js', 'shared/match3.js',
+  'shared/base.css', 'shared/match3.css', 'shared/util.js', 'shared/wavedash.js', 'shared/gems.js', 'shared/match3.js',
   'mahjong/', 'mahjong/index.html', 'mahjong/mahjong.css', 'mahjong/app.js', 'mahjong/game.js', 'mahjong/tiles.js', 'mahjong/layouts.js',
   'gems/', 'gems/index.html', 'gems/app.js',
   'mosaic/', 'mosaic/index.html', 'mosaic/mosaic.css', 'mosaic/app.js', 'mosaic/levels.js',

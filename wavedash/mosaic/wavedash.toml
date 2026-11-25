@@ -1,0 +1,8 @@
+# Jewel Mosaic on Wavedash. tools/wavedash.sh fills build/ and runs `wavedash build push` here.
+# game_id: the project id from the Wavedash Developer Portal, or from
+# `wavedash project create --title "Jewel Mosaic" --team-id <TEAM_ID>`.
+# WAVEDASH_GAME_ID overrides it (the CLI reads it); tools/wavedash.sh also takes WAVEDASH_GAME_ID_MOSAIC
+# (in CI, the repository variable of that name), so the id need not be committed.
+game_id = "j971e7fvkm9bhh1m5qq8apc14x8jx3mj"
+upload_dir = "build"
+entrypoint = "index.html"

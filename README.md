@@ -53,3 +53,15 @@ configured in `wavedash/<game>/wavedash.toml` (`gems`, `mahjong`, `mosaic`, `pai
 On Wavedash the game stays behind Wavedash's loading screen until it calls `Wavedash.init()`: each
 game does it through `shared/wavedash.js` once its board is drawn. Elsewhere (GitHub Pages, `python3
 -m http.server`) there is no `Wavedash` object and the call does nothing.
+
+## Publishing on itch.io
+
+The same builds go to [itch.io](https://itch.io) with
+[butler](https://itch.io/docs/butler/), each to its own page as an HTML5 build: `gems` at https://sirmmo.itch.io/gemfall, `mahjong` at https://sirmmo.itch.io/mahjong-pairs, `mosaic` at https://sirmmo.itch.io/jewel-mosaic, `paint` at https://sirmmo.itch.io/prism-painter, `queens` at https://sirmmo.itch.io/crowns.
+`sh tools/itch.sh [game]` builds them as for Wavedash and runs `butler push <build>
+sirmmo/<page>:html5`; without butler, or with `ITCH_DRY_RUN=1`, it only says what it would push.
+In CI, Actions > Itch > Run workflow does the same, with the repository secret `BUTLER_API_KEY`
+(an API key from https://itch.io/user/settings/api-keys). Each page must exist on itch.io before
+its first push (Dashboard > Create new project, kind HTML); after the first upload, tick "This
+file will be played in the browser" on it once.
+
